@@ -1,0 +1,212 @@
+:root {
+    --primary-color: #e62e1c;
+    --secondary-color: #2e100d;
+    --dark-color: #111;
+    --text-color: #fff;
+    --text-faded: #aaa;
+    --font-main: Arial, Tahoma, Geneva, Verdana, sans-serif; /* TODO: package a font */
+}
+
+* {
+    font-family: var(--font-main);
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    background-color: black;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-text {
+    text-align: center;
+}
+
+/* HEADER */
+
+header, footer {
+    padding: 20px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+    .header-content {
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+.logo {
+    width: 150px;
+    height: 100px;
+    background-image: url("images/movartex-transparent.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* NAVIGATION */
+
+nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 30px;
+}
+
+nav a {
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 20px 0;
+    position: relative;
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.2s;
+}
+
+nav a:hover:after {
+    width: 100%;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+section:nth-child(2n-1) {
+    background-color: #000;
+}
+
+section:nth-child(2n-1) .card {
+    background-color: var(--dark-color);
+}
+
+section:nth-child(2n) {
+    background-color: var(--dark-color);
+}
+
+section:nth-child(2n) .card {
+    background-color: #000;
+}
+
+/* CARDS */
+
+.card {
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.card .icon {
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    color: var(--primary-color);
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+
+.card .icon i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+}
+
+.card p {
+    color: var(--text-faded);
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+}
+
+.news-date {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.news-more {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.news-more i {
+    color: var(--primary-color);
+    margin-left: 0.5rem;
+}
+
+/* MAIN */
+
+main {
+    height: 90vh;
+}
+
+main h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    color: var(--primary-color);
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+section {
+    padding: 40px 0;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin: 1rem 0 3rem 0;
+    text-align: center;
+}
+
+footer {
+}
+
+.copyright {
+    padding: 20px;
+    border-top: 1px solid #333;
+    color: #999;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.dancers {
+    background-image: url("images/dancers-grayscale-2.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
