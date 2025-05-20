@@ -252,3 +252,11 @@ section h2, main h2 {
 .social i:hover {
     color: var(--primary-color-dark);
 }
+
+footer .social i {
+    color: var(--primary-color-dark);
+}
+
+footer .social i:hover {
+    color: var(--primary-color);
+}
