@@ -1,5 +1,6 @@
 :root {
     --primary-color: #e62e1c;
+    --primary-color-dark: #a11e12;
     --secondary-color: #2e100d;
     --dark-color: #111;
     --text-color: #fff;
@@ -14,6 +15,7 @@
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 html {
@@ -34,6 +36,16 @@ html {
 
 .center-text {
     text-align: center;
+}
+
+.margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.small-text {
+    font-size: 0.9rem;
+    color: var(--text-faded);
 }
 
 /* HEADER */
@@ -105,11 +117,11 @@ nav a:hover:after {
     gap: 2rem;
 }
 
-section:nth-child(2n-1) {
+section:nth-child(2n-1), main {
     background-color: #000;
 }
 
-section:nth-child(2n-1) .card {
+section:nth-child(2n-1) .card, main .card {
     background-color: var(--dark-color);
 }
 
@@ -146,10 +158,23 @@ section:nth-child(2n) .card {
     font-size: 1.5rem;
 }
 
+.card h4 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 1rem 0;
+}
+
+.card h4 i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+}
+
+
 .card p {
     color: var(--text-faded);
     font-size: 0.9rem;
     line-height: 1.5rem;
+    margin: 1rem 0;
 }
 
 .news-date {
@@ -187,13 +212,10 @@ section {
     padding: 40px 0;
 }
 
-section h2 {
+section h2, main h2 {
     font-size: 2.5rem;
     margin: 1rem 0 3rem 0;
     text-align: center;
-}
-
-footer {
 }
 
 .copyright {
@@ -209,4 +231,24 @@ footer {
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: center;
+}
+
+.map {
+    width: 100%;
+    height: 50vh;
+}
+
+.social {
+    gap: 0.5rem;
+}
+
+.social i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    transition: color 0.2s;
+    padding: 0.5rem;
+}
+
+.social i:hover {
+    color: var(--primary-color-dark);
 }
