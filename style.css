@@ -171,7 +171,7 @@ section:nth-child(2n) .card {
 /* MAIN */
 
 main {
-    height: 90vh;
+    min-height: 90vh;
 }
 
 main h1 {
