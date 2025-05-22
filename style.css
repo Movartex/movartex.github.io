@@ -260,3 +260,30 @@ footer .social i {
 footer .social i:hover {
     color: var(--primary-color);
 }
+
+/* FLOATS */
+
+.clearfix {
+    overflow: auto;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.image {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+/* COURSES */
+
+.course-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}

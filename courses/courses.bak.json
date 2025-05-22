@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Standard",
+        "short": "standard-short.html",
+        "long": "standard-long.html"
+    },
+    {
+        "name": "Latin",
+        "short": "latin-short.html",
+        "long": "latin-long.html"
+    },
+    {
+        "name": "Classic",
+        "short": "classic-short.html",
+        "long": "classic-long.html"
+    },
+    {
+        "name": "Caribbean",
+        "short": "caribbean-short.html",
+        "long": "caribbean-long.html"
+    },
+    {
+        "name": "Hip-Hop",
+        "short": "hip-hop-short.html",
+        "long": "hip-hop-long.html"
+    },
+    {
+        "name": "Waacking",
+        "short": "waacking-short.html",
+        "long": "waacking-long.html"
+    },
+    {
+        "name": "Breakdance",
+        "short": "breakdance-short.html",
+        "long": "breakdance-long.html"
+    },
+    {
+        "name": "Swing",
+        "short": "swing-short.html",
+        "long": "swing-long.html"
+    },
+    {
+        "name": "Jazz Funk",
+        "short": "jazz-funk-short.html",
+        "long": "jazz-funk-long.html"
+    },
+    {
+        "name": "Heels",
+        "short": "heels-short.html",
+        "long": "heels-long.html"
+    },
+    {
+        "name": "Modern",
+        "short": "modern-short.html",
+        "long": "modern-long.html"
+    },
+    {
+        "name": "Musical",
+        "short": "musical-short.html",
+        "long": "musical-long.html"
+    },
+    {
+        "name": "Afro",
+        "short": "afro-short.html",
+        "long": "afro-long.html"
+    },
+    {
+        "name": "Yoga",
+        "short": "yoga-short.html",
+        "long": "yoga-long.html"
+    },
+    {
+        "name": "Stretching",
+        "short": "stretching-short.html",
+        "long": "stretching-long.html"
+    },
+    {
+        "name": "Personal Training",
+        "short": "personal-training-short.html",
+        "long": "personal-training-long.html"
+    }
+]
