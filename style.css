@@ -117,19 +117,19 @@ nav a:hover:after {
     gap: 2rem;
 }
 
-section:nth-child(2n-1), main {
+section:nth-of-type(odd), main {
     background-color: #000;
 }
 
-section:nth-child(2n-1) .card, main .card {
+section:nth-of-type(odd) .card, main .card {
     background-color: var(--dark-color);
 }
 
-section:nth-child(2n) {
+section:nth-of-type(even) {
     background-color: var(--dark-color);
 }
 
-section:nth-child(2n) .card {
+section:nth-of-type(even) .card {
     background-color: #000;
 }
 
@@ -182,13 +182,13 @@ section:nth-child(2n) .card {
     font-size: 0.9rem;
 }
 
-.news-more {
+.learn-more {
     color: var(--primary-color);
     font-size: 0.9rem;
     font-weight: 600;
 }
 
-.news-more i {
+.learn-more i {
     color: var(--primary-color);
     margin-left: 0.5rem;
 }
