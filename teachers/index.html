@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/style.css">
     <!-- TODO package icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <title>Movartex - Courses</title>
+    <title>Movartex - Teachers</title>
 </head>
 <body>
     <header>
@@ -25,7 +25,7 @@
         </div>
     </header>
     <section>
-        <h2>Our Courses</h2>
+        <h2>Our Teachers</h2>
         <template id="template">
             <a class="card center-text">
                 <img class="icon-image">
@@ -34,17 +34,17 @@
                 <strong class="learn-more">Learn more<i class="fas fa-arrow-right"></i></strong>
             </a>
         </template>
-        <div class="container grid" id="courses"></div>
+        <div class="container grid" id="teachers"></div>
         <script type="module">
             const template = document.querySelector('#template');
-            const container = document.querySelector('#courses');
-            const courses = await fetch('/courses/courses.json').then(response => response.json());
-            for (const course of courses) {
+            const container = document.querySelector('#teachers');
+            const teachers = await fetch('/teachers/teachers.json').then(response => response.json());
+            for (const teacher of teachers) {
                 const element = template.content.cloneNode(true);
-                element.querySelector('h3').textContent = course.name;
-                element.querySelector('p').textContent = course.short;
-                element.querySelector('img').src = course.image;
-                element.querySelector('a').href = course.url;
+                element.querySelector('h3').textContent = teacher.name;
+                element.querySelector('p').textContent = teacher.short;
+                element.querySelector('img').src = teacher.image;
+                element.querySelector('a').href = teacher.url;
                 container.appendChild(element);
             }
         </script>
