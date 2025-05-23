@@ -105,7 +105,7 @@ nav a:after {
     transition: width 0.2s;
 }
 
-nav a:hover:after {
+nav a:hover:after, nav a.selected:after {
     width: 100%;
 }
 
