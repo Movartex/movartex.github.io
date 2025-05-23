@@ -177,6 +177,12 @@ section:nth-of-type(even) .card {
     margin: 1rem 0;
 }
 
+.icon-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
 .news-date {
     color: var(--primary-color);
     font-size: 0.9rem;
@@ -278,12 +284,4 @@ footer .social i:hover {
 .image {
     max-width: 500px;
     max-height: 500px;
-}
-
-/* COURSES */
-
-.course-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
 }
