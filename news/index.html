@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/style.css">
     <!-- TODO package icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <title>Movartex - Teachers</title>
+    <title>Movartex - News</title>
 </head>
 <body>
     <header>
@@ -17,34 +17,35 @@
             <a class="logo center" href="/"></a>
             <nav>
                 <a href="/courses">Courses</a>
-                <a href="/teachers" class="selected">Teachers</a>
+                <a href="/teachers">Teachers</a>
                 <a href="#">Schedule</a>
-                <a href="/news">News</a>
+                <a href="/news" class="selected">News</a>
                 <a href="/contact">Contact</a>
             </nav>
         </div>
     </header>
     <section>
-        <h2>Our Teachers</h2>
+        <h2>News</h2>
         <template id="template">
-            <a class="card center-text">
-                <img class="icon-image">
+            <div class="card">
+                <div class="news-date">Date</div>
                 <h3>Name</h3>
                 <p>Short description</p>
-                <strong class="learn-more">Learn more<i class="fas fa-arrow-right"></i></strong>
-            </a>
+                <a class="learn-more">Learn more<i class="fas fa-arrow-right"></i></a>
+            </div>
         </template>
-        <div class="container grid" id="teachers"></div>
+        <div class="container grid" id="news"></div>
         <script type="module">
             const template = document.querySelector('#template');
-            const container = document.querySelector('#teachers');
-            const teachers = await fetch('/teachers/teachers.json').then(response => response.json());
-            for (const teacher of teachers) {
+            const container = document.querySelector('#news');
+            const news = await fetch('/news/news.json').then(response => response.json());
+            for (const newsItem of news) {
                 const element = template.content.cloneNode(true);
-                element.querySelector('h3').textContent = teacher.name;
-                element.querySelector('p').textContent = teacher.short;
-                element.querySelector('img').src = teacher.image;
-                element.querySelector('a').href = teacher.url;
+                // TODO: format date
+                element.querySelector('.news-date').textContent = newsItem.date;
+                element.querySelector('h3').textContent = newsItem.name;
+                element.querySelector('p').textContent = newsItem.short;
+                element.querySelector('a').href = newsItem.url;
                 container.appendChild(element);
             }
         </script>
