@@ -109,6 +109,28 @@ nav a:hover:after, nav a.selected:after {
     width: 100%;
 }
 
+.lang-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.lang-icon {
+    width: 20px;
+    height: 15px;
+
+    cursor: pointer;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+
+.lang-it { background-image: url("images/it.svg"); }
+.lang-sl { background-image: url("images/sl.svg"); }
+.lang-en { background-image: url("images/en.svg"); }
+
 /* GRID */
 
 .grid {
