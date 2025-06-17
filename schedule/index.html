@@ -35,22 +35,22 @@
             <nav lang="it">
                 <a href="/courses">Corsi</a>
                 <a href="/teachers">Insegnanti</a>
-                <a href="/schedule">Orari</a>
-                <a href="/news" class="selected">Notizie</a>
+                <a href="/schedule" class="selected">Orari</a>
+                <a href="/news">Notizie</a>
                 <a href="/contact">Contatto</a>
             </nav>
             <nav lang="sl">
                 <a href="/courses">Tečaji</a>
                 <a href="/teachers">Učitelji</a>
-                <a href="/schedule">Urnik</a>
-                <a href="/news" class="selected">Novice</a>
+                <a href="/schedule" class="selected">Urnik</a>
+                <a href="/news">Novice</a>
                 <a href="/contact">Kontakt</a>
             </nav>
             <nav lang="en">
                 <a href="/courses">Courses</a>
                 <a href="/teachers">Teachers</a>
-                <a href="/schedule">Schedule</a>
-                <a href="/news" class="selected">News</a>
+                <a href="/schedule" class="selected">Schedule</a>
+                <a href="/news">News</a>
                 <a href="/contact">Contact</a>
             </nav>
             <div class="lang-select">
@@ -61,32 +61,11 @@
         </div>
     </header>
     <section>
-        <h2 lang="it">Notizie</h2>
-        <h2 lang="sl">Novice</h2>
-        <h2 lang="en">News</h2>
-        <template id="template">
-            <div class="card">
-                <div class="news-date">Date</div>
-                <h3>Name</h3>
-                <p>Short description</p>
-                <a class="learn-more">Learn more<i class="fas fa-arrow-right"></i></a>
-            </div>
-        </template>
-        <div class="container grid" id="news"></div>
-        <script type="module">
-            const template = document.querySelector('#template');
-            const container = document.querySelector('#news');
-            const news = await fetch('/news/news.json').then(response => response.json());
-            for (const newsItem of news) {
-                const element = template.content.cloneNode(true);
-                // TODO: format date
-                element.querySelector('.news-date').textContent = newsItem.date;
-                element.querySelector('h3').textContent = newsItem.name;
-                element.querySelector('p').textContent = newsItem.short;
-                element.querySelector('a').href = newsItem.url;
-                container.appendChild(element);
-            }
-        </script>
+        <div class="container">
+            <h2 lang="it">Orario delle lezioni</h1>
+            <h2 lang="sl">Urnik tečajev</h1>
+            <h2 lang="en">Class schedule</h1>
+        </div>
     </section>
     <footer>
         <div class="container">

@@ -9,19 +9,55 @@
     <link rel="stylesheet" href="/style.css">
     <!-- TODO package icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <title>Movartex - Afro dance</title>
+    <title>Movartex - Art & Movement</title>
+    <style id="lang">[lang]:not([lang|="it"]) { display: none; }</style>
+    <script>
+        function getDefaultLanguage() {
+            const defaultLanguage =
+                window.localStorage.getItem('lang') ??
+                navigator.language?.substring(0, 2) ??
+                'it';
+            return defaultLanguage.toLowerCase();
+        }
+        function changeLanguage(requestedLang = getDefaultLanguage()) {
+            const availableLangs = ['it', 'sl', 'en'];
+            const lang = availableLangs.includes(requestedLang) ? requestedLang : availableLangs[0];
+            window.localStorage.setItem('lang', lang);
+            document.querySelector('#lang').innerText = `[lang]:not([lang|="${lang}"]) { display: none; }`;
+        }
+        changeLanguage();
+    </script>
 </head>
 <body>
     <header>
         <div class="container header-content">
             <a class="logo center" href="/"></a>
-            <nav>
+            <nav lang="it">
+                <a href="/courses" class="selected">Corsi</a>
+                <a href="/teachers">Insegnanti</a>
+                <a href="/schedule">Orari</a>
+                <a href="/news">Notizie</a>
+                <a href="/contact">Contatto</a>
+            </nav>
+            <nav lang="sl">
+                <a href="/courses" class="selected">Tečaji</a>
+                <a href="/teachers">Učitelji</a>
+                <a href="/schedule">Urnik</a>
+                <a href="/news">Novice</a>
+                <a href="/contact">Kontakt</a>
+            </nav>
+            <nav lang="en">
                 <a href="/courses" class="selected">Courses</a>
                 <a href="/teachers">Teachers</a>
-                <a href="#">Schedule</a>
+                <a href="/schedule">Schedule</a>
                 <a href="/news">News</a>
                 <a href="/contact">Contact</a>
             </nav>
+            <div class="lang-select">
+                <i class="lang-icon lang-it" onclick="changeLanguage('it');"></i>
+                <i class="lang-icon lang-sl" onclick="changeLanguage('sl');"></i>
+                <i class="lang-icon lang-en" onclick="changeLanguage('en');"></i>
+            </div>
         </div>
     </header>
     <section>
@@ -34,7 +70,9 @@
     </section>
     <footer>
         <div class="container">
-            <div class="copyright">© 2025 ASD Movartex. All rights reserved.</div>
+            <div lang="it" class="copyright">© 2025 ASD Movartex. Tutti i diritti riservati.</div>
+            <div lang="sl" class="copyright">© 2025 ASD Movartex. Vse pravice pridržane.</div>
+            <div lang="en" class="copyright">© 2025 ASD Movartex. All rights reserved.</div>
             <div class="social center">
                 <a href="https://www.facebook.com/ASDMovartex/"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/asd_movartex/"><i class="fab fa-instagram"></i></a>
