@@ -64,26 +64,34 @@
         <h2 lang="it">I nostri corsi</h2>
         <h2 lang="sl">Naši tečaji</h2>
         <h2 lang="en">Our courses</h2>
-        <template id="template">
-            <a class="card center-text">
-                <img class="icon-image">
-                <h3>Name</h3>
-                <p>Short description</p>
-                <strong class="learn-more">Learn more<i class="fas fa-arrow-right"></i></strong>
-            </a>
-        </template>
         <div class="container grid" id="courses"></div>
         <script type="module">
-            const template = document.querySelector('#template');
+            const data = await fetch('/data.json').then(response => response.json());
             const container = document.querySelector('#courses');
-            const courses = await fetch('/courses/courses.json').then(response => response.json());
-            for (const course of courses) {
-                const element = template.content.cloneNode(true);
-                element.querySelector('h3').textContent = course.name;
-                element.querySelector('p').textContent = course.short;
-                element.querySelector('img').src = course.image;
-                element.querySelector('a').href = course.url;
+
+            for (const course of data.courses) {
+                const url = new URL(course.url, window.location.origin);
+                const innerHTML = `
+                    <div class="card center-text">
+                        <img class="icon-image" src="${course.image}">
+                        <h3></h3>
+                        <p></p>
+                        <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fas fa-arrow-right"></i></a>
+                        <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fas fa-arrow-right"></i></a>
+                        <a lang="en" class="learn-more" href="${url}">Learn more<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                const div = document.createElement('div');
+                div.innerHTML = innerHTML;
+                const element = div.firstElementChild;
                 container.appendChild(element);
+
+                fetch(new URL(course.short, window.location.origin)).then(response => response.text()).then(shortHTML => {
+                   const short = document.createElement('template');
+                   short.innerHTML = shortHTML;
+                   element.querySelector('h3').replaceChildren(short.content.querySelector('.course-title'));
+                   element.querySelector('p').replaceChildren(short.content.querySelector('.course-short'));
+                });
             }
         </script>
     </section>
