@@ -199,6 +199,10 @@ section:nth-of-type(even) .card {
     margin: 1rem 0;
 }
 
+.card p span {
+    color: var(--text-faded);
+}
+
 .icon-image {
     width: 200px;
     height: 200px;

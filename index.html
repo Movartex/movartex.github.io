@@ -71,53 +71,91 @@
         <h2 lang="it">I nostri corsi</h2>
         <h2 lang="sl">Naši tečaji</h2>
         <h2 lang="en">Our Courses</h2>
-        <div class="container grid">
-            <div class="card center-text">
-                <div class="icon center"><i class="fas fa-music"></i></div>
-                <h3>Ballet</h3>
-                <p>Classical ballet training for all ages and skill levels. Develop grace, strength, and technique.</p>
-            </div>
-            <div class="card center-text">
-                <div class="icon center"><i class="fas fa-users"></i></div>
-                <h3>Contemporary</h3>
-                <p>Modern dance styles that emphasize versatility, self-expression, and fluid movements.</p>
-            </div>
-            <div class="card center-text">
-                <div class="icon center"><i class="fas fa-star"></i></div>
-                <h3>Hip-Hop</h3>
-                <p>Urban dance styles with energetic movements, rhythm, and attitude for all skill levels.</p>
-            </div>
-            <div class="card center-text">
-                <div class="icon center"><i class="fas fa-fire"></i></div>
-                <h3>Jazz Fusion</h3>
-                <p>A blend of jazz techniques with contemporary and urban dance styles for dynamic expression.</p>
-            </div>
-        </div>
+        <div class="container grid" id="courses"></div>
+        <script type="module">
+            const data = await fetch('/data.json').then(response => response.json());
+            const container = document.querySelector('#courses');
+
+            const icons = ['fa-music', 'fa-users', 'fa-star', 'fa-fire'];
+
+            for (const [index, course] of data.courses.slice(0, 3).entries()) {
+                const url = new URL(course.url, window.location.origin);
+                const icon = icons[index % icons.length];
+                const innerHTML = `
+                    <div class="card center-text">
+                        <div class="icon center"><i class="fas ${icon}"></i></div>
+                        <h3></h3>
+                        <p></p>
+                        <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fas fa-arrow-right"></i></a>
+                        <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fas fa-arrow-right"></i></a>
+                        <a lang="en" class="learn-more" href="${url}">Learn more<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                const div = document.createElement('div');
+                div.innerHTML = innerHTML;
+                const element = div.firstElementChild;
+                container.appendChild(element);
+
+                fetch(new URL(course.short, window.location.origin)).then(response => response.text()).then(shortHTML => {
+                   const short = document.createElement('template');
+                   short.innerHTML = shortHTML;
+                   element.querySelector('h3').replaceChildren(short.content.querySelector('.course-title'));
+                   element.querySelector('p').replaceChildren(...short.content.querySelector('.course-short').children);
+                });
+            }
+
+            // Append default course
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <div class="card center-text">
+                    <div class="icon center"><i class="fas fa-fire"></i></div>
+                    <h3 lang="it">... e tanti altri!</h3>
+                    <h3 lang="sl">... in še mnogo drugih!</h3>
+                    <h3 lang="en">... and many more!</h3>
+                    <a lang="it" class="learn-more" href="/courses">Scopri di più<i class="fas fa-arrow-right"></i></a>
+                    <a lang="sl" class="learn-more" href="/courses">Preberi več<i class="fas fa-arrow-right"></i></a>
+                    <a lang="en" class="learn-more" href="/courses">Learn more<i class="fas fa-arrow-right"></i></a>
+                </div>
+            `;
+            const element = div.firstElementChild;
+            container.appendChild(element);
+        </script>
     </section>
     <section>
         <h2 lang="it">Ultime notizie</h2>
         <h2 lang="sl">Zadnje novice</h2>
         <h2 lang="en">Latest News</h2>
-        <div class="container grid">
-            <div class="card">
-                <div class="news-date">May 19, 2025</div>
-                <h3>Summer dance intensive registration now open</h3>
-                <p>Our popular summer dance intensive program is now accepting registrations. Early bird discount available until May 30th!</p>
-                <a class="learn-more" href="#">Learn more<i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="card">
-                <div class="news-date">May 10, 2025</div>
-                <h3>New Hip-Hop class for beginners</h3>
-                <p>We're excited to introduce a new beginner-friendly hip-hop class on Tuesday evenings. Perfect for those looking to try something new!</p>
-                <a class="learn-more" href="#">Learn more<i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="card">
-                <div class="news-date">April 30, 2025</div>
-                <h3>Annual spring showcase - save the date!</h3>
-                <p>Mark your calendars for our annual spring showcase on May 30th. Tickets will be available starting May 1st.</p>
-                <a class="learn-more" href="#">Learn more<i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
+        <div class="container grid" id="news"></div>
+        <script type="module">
+            const data = await fetch('/data.json').then(response => response.json());
+            const container = document.querySelector('#news');
+
+            for (const news of data.news.slice(0, 3)) {
+                const url = new URL(news.url, window.location.origin);
+                const innerHTML = `
+                    <div class="card">
+                        <div class="news-date"></div>
+                        <h3></h3>
+                        <p></p>
+                        <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fas fa-arrow-right"></i></a>
+                        <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fas fa-arrow-right"></i></a>
+                        <a lang="en" class="learn-more" href="${url}">Learn more<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                const div = document.createElement('div');
+                div.innerHTML = innerHTML;
+                const element = div.firstElementChild;
+                container.appendChild(element);
+
+                fetch(new URL(news.short, window.location.origin)).then(response => response.text()).then(shortHTML => {
+                   const short = document.createElement('template');
+                   short.innerHTML = shortHTML;
+                   element.querySelector('.news-date').textContent = news.date;
+                   element.querySelector('h3').replaceChildren(short.content.querySelector('.news-title'));
+                   element.querySelector('p').replaceChildren(short.content.querySelector('.news-short'));
+                });
+            }
+        </script>
     </section>
     <footer>
         <div class="container">
