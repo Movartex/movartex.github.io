@@ -379,10 +379,18 @@ footer .social i:hover {
     }
 
     header,
-    footer,
+    footer .social,
     .map
     {
         display: none !important;
+    }
+
+    main {
+        min-height: 20vh;
+    }
+
+    .dancers {
+        background: none;
     }
 
     .grid {
