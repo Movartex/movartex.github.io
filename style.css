@@ -160,6 +160,7 @@ section:nth-of-type(even) .card {
 .card {
     padding: 1.5rem;
     border-radius: 10px;
+    break-inside: avoid;
 }
 
 .card .icon {
@@ -310,4 +311,37 @@ footer .social i:hover {
 .image {
     max-width: 500px;
     max-height: 500px;
+}
+
+/* PRINT */
+
+@media print {
+    * {
+        background-color: revert !important;
+        color: black !important;
+        font-size: 0.8rem;
+        line-height: 1rem;
+    }
+
+    .container {
+        border-top: 1px solid black;
+    }
+
+    header,
+    footer,
+    .map
+    {
+        display: none !important;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .icon-image {
+        width: 150px;
+        height: 150px;
+    }
 }
