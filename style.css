@@ -313,6 +313,57 @@ footer .social i:hover {
     max-height: 500px;
 }
 
+/* SCHEDULE */
+
+.schedule-container {
+    background-color: var(--dark-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(7, 1fr);
+    gap: 1px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.schedule-header {
+    background-color: var(--primary-color);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.time-slot {
+    grid-column: 1;
+    background-color: black;
+    color: var(--text-faded);
+    border-right: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.course {
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-decoration: none;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
 /* PRINT */
 
 @media print {
