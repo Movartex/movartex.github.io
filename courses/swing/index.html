@@ -99,7 +99,33 @@
         <h2 lang="it">Orari</h2>
         <h2 lang="sl">Urnik</h2>
         <h2 lang="en">Schedule</h2>
-        <!-- TODO -->
+        <div class="schedule-container container" id="schedule"></div>
+        <script type="module">
+            import { db } from '/scripts/data.js';
+            import { createSchedule } from '/scripts/schedule.js';
+            import { createScheduleItem } from '/scripts/cards.js';
+
+            const selection = db.select('ScheduleItem', scheduleItem => {
+                const course = db.link('ScheduleItem', scheduleItem, 'Course');
+                const courseCategory = db.link('Course', course, 'CourseCategory');
+                return courseCategory.Name === 'swing';
+            });
+            const scheduleItems = await Promise.all(selection.map(async scheduleItem => {
+                const location = db.link('ScheduleItem', scheduleItem, 'Location');
+                const course = db.link('ScheduleItem', scheduleItem, 'Course');
+                const courseCategory = db.link('Course', course, 'CourseCategory');
+                const element = await createScheduleItem(scheduleItem, course, courseCategory, location);
+                return {
+                    element,
+                    start: scheduleItem.StartTime,
+                    end: scheduleItem.EndTime,
+                    day: scheduleItem.Day,
+                };
+            }));
+
+            const schedule = createSchedule(scheduleItems);
+            document.querySelector('#schedule').appendChild(schedule);
+        </script>
     </section>
     <footer>
         <div class="container">

@@ -100,7 +100,7 @@ export async function createNewsCard(news) {
     return card;
 }
 
-export async function createScheduleItem(scheduleItem, course, courseCategory) {
+export async function createScheduleItem(scheduleItem, course, courseCategory, location) {
     const url = new URL(courseCategory.URL, window.location.origin);
     const short = new URL(course.Short, window.location.origin);
 
@@ -116,6 +116,7 @@ export async function createScheduleItem(scheduleItem, course, courseCategory) {
         <a href="${url}" class="schedule-item" style="background-color: ${hex};">
             <div class="schedule-item-name"></div>
             <div class="schedule-item-time">${scheduleItem.StartTime} - ${scheduleItem.EndTime}</div>
+            <div class="schedule-item-location"></div>
         </a>
     `);
 
@@ -123,6 +124,14 @@ export async function createScheduleItem(scheduleItem, course, courseCategory) {
        const short = template(shortHTML);
        card.querySelector('.schedule-item-name').replaceChildren(short.querySelector('.course-title'));
     });
+
+    if (location && location !== window.location) { // because global scope gets window -_- ...
+        const url = new URL(location.Short, window.location.origin);
+        await fetch(url).then(response => response.text()).then(shortHTML => {
+            const short = template(shortHTML);
+            card.querySelector('.schedule-item-location').replaceChildren(short.querySelector('.location-title'));
+        });
+    }
 
     return card;
 }
