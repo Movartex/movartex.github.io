@@ -50,33 +50,13 @@
         <h2 lang="en">News</h2>
         <div class="container grid" id="news"></div>
         <script type="module">
-            const data = await fetch('/data.json').then(response => response.json());
-            const container = document.querySelector('#news');
+            import { db } from '/scripts/data.js';
+            import { createNewsCard } from '/scripts/cards.js';
 
-            for (const news of data.news) {
-                const url = new URL(news.url, window.location.origin);
-                const innerHTML = `
-                    <div class="card">
-                        <div class="news-date"></div>
-                        <h3></h3>
-                        <p></p>
-                        <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fas fa-arrow-right"></i></a>
-                        <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fas fa-arrow-right"></i></a>
-                        <a lang="en" class="learn-more" href="${url}">Learn more<i class="fas fa-arrow-right"></i></a>
-                    </div>
-                `;
-                const div = document.createElement('div');
-                div.innerHTML = innerHTML;
-                const element = div.firstElementChild;
-                container.appendChild(element);
-
-                fetch(new URL(news.short, window.location.origin)).then(response => response.text()).then(shortHTML => {
-                   const short = document.createElement('template');
-                   short.innerHTML = shortHTML;
-                   element.querySelector('.news-date').textContent = news.date;
-                   element.querySelector('h3').replaceChildren(short.content.querySelector('.news-title'));
-                   element.querySelector('p').replaceChildren(short.content.querySelector('.news-short'));
-                });
+            const news = document.querySelector('#news');
+            const newsCards = await Promise.all(db.select('News').map(createNewsCard));
+            for (const card of newsCards) {
+                news.appendChild(card);
             }
         </script>
     </section>

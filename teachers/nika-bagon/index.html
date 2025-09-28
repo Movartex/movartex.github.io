@@ -52,6 +52,30 @@
             <p>This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text.</p>
         </div>
     </section>
+    <section>
+        <h2 lang="it">Corsi</h2>
+        <h2 lang="sl">Tečaji</h2>
+        <h2 lang="en">Courses</h2>
+        <div class="container grid" id="courses"></div>
+        <script type="module">
+            import { db, coursesOfTeacher } from '/scripts/data.js';
+            import { createCourseCategoryCard } from '/scripts/cards.js';
+
+            const container = document.querySelector('#courses');
+            const teacher = db.find('Teacher', ({ Name }) => Name === 'Nika Bagon');
+            const courses = coursesOfTeacher(teacher);
+            const courseCards = await Promise.all(courses.map(async course => {
+                const courseCategory = db.link('Course', course, 'CourseCategory');
+                courseCategory.Short = course.Short;
+                const card = await createCourseCategoryCard(courseCategory);
+                return card;
+            }));
+
+            for (const card of courseCards) {
+                container.appendChild(card);
+            }
+        </script>
+    </section>
     <footer>
         <div class="container">
             <div lang="it" class="copyright">© 2025 ASD Movartex. Tutti i diritti riservati.</div>

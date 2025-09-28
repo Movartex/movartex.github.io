@@ -1,0 +1,124 @@
+{
+  "CourseCategory": {
+    "type": "object",
+    "properties": {
+      "CourseCategoryID": { "type": "integer" },
+      "Name": { "type": "string" },
+      "URL": { "type": "string" },
+      "Icon": { "type": "string" },
+      "Short": { "type": "string" }
+    },
+    "required": ["CourseCategoryID"],
+    "autoIncrement": ["CourseCategoryID"],
+    "primaryKey": ["CourseCategoryID"]
+  },
+  "Course": {
+    "type": "object",
+    "properties": {
+      "CourseID": { "type": "integer" },
+      "CourseCategoryID": { "type": "integer" },
+      "Name": { "type": "string" },
+      "Short": { "type": "string" }
+    },
+    "required": ["CourseID", "CourseCategoryID"],
+    "autoIncrement": ["CourseID"],
+    "primaryKey": ["CourseID"],
+    "foreignKeys": [
+      {
+        "name": "CourseCategory",
+        "nativeKey": ["CourseCategoryID"],
+        "foreignKey": ["CourseCategoryID"],
+        "foreignTable": "CourseCategory"
+      }
+    ]
+  },
+  "Teacher": {
+    "type": "object",
+    "properties": {
+      "TeacherID": { "type": "integer" },
+      "Name": { "type": "string" },
+      "URL": { "type": "string" },
+      "Icon": { "type": "string" },
+      "Short": { "type": "string" }
+    },
+    "required": ["TeacherID"],
+    "autoIncrement": ["TeacherID"],
+    "primaryKey": ["TeacherID"]
+  },
+  "CourseTeacher": {
+    "type": "object",
+    "properties": {
+      "CourseTeacherID": { "type": "integer" },
+      "CourseID": { "type": "integer" },
+      "TeacherID": { "type": "integer" }
+    },
+    "required": ["CourseTeacherID", "CourseID", "TeacherID"],
+    "autoIncrement": ["CourseTeacherID"],
+    "primaryKey": ["CourseTeacherID"],
+    "foreignKeys": [
+      {
+        "name": "Course",
+        "nativeKey": ["CourseID"],
+        "foreignKey": ["CourseID"],
+        "foreignTable": "Course"
+      },
+      {
+        "name": "Teacher",
+        "nativeKey": ["TeacherID"],
+        "foreignKey": ["TeacherID"],
+        "foreignTable": "Teacher"
+      }
+    ]
+  },
+  "Location": {
+    "type": "object",
+    "properties": {
+      "LocationID": { "type": "integer" },
+      "Name": { "type": "string" },
+      "Short": { "type": "string" }
+    },
+    "required": ["LocationID"],
+    "autoIncrement": ["LocationID"],
+    "primaryKey": ["LocationID"]
+  },
+  "ScheduleItem": {
+    "type": "object",
+    "properties": {
+      "ScheduleItemID": { "type": "integer" },
+      "CourseID": { "type": "integer" },
+      "LocationID": { "type": "integer" },
+      "Day": { "type": "integer" },
+      "StartTime": { "type": "string" },
+      "EndTime": { "type": "string" }
+    },
+    "required": ["ScheduleItemID", "CourseID", "LocationID"],
+    "autoIncrement": ["ScheduleItemID"],
+    "primaryKey": ["ScheduleItemID"],
+    "foreignKeys": [
+      {
+        "name": "Course",
+        "nativeKey": ["CourseID"],
+        "foreignKey": ["CourseID"],
+        "foreignTable": "Course"
+      },
+      {
+        "name": "Location",
+        "nativeKey": ["LocationID"],
+        "foreignKey": ["LocationID"],
+        "foreignTable": "Location"
+      }
+    ]
+  },
+  "News": {
+    "type": "object",
+    "properties": {
+      "NewsID": { "type": "integer" },
+      "Date": { "type": "string" },
+      "URL": { "type": "string" },
+      "Short": { "type": "string" }
+    },
+    "required": ["NewsID"],
+    "autoIncrement": ["NewsID"],
+    "primaryKey": ["NewsID"]
+  }
+}

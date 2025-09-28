@@ -1,0 +1,44 @@
+{
+  "CourseCategory": [
+    { "CourseCategoryID": 1, "Name": "standard", "URL": "courses/standard", "Icon": "courses/standard/icon.webp", "Short": "courses/standard/short.html" },
+    { "CourseCategoryID": 2, "Name": "latin", "URL": "courses/latin", "Icon": "courses/latin/icon.webp", "Short": "courses/latin/short.html" },
+    { "CourseCategoryID": 3, "Name": "breakdance", "URL": "courses/breakdance", "Icon": "courses/breakdance/icon.webp", "Short": "courses/breakdance/short.html" },
+    { "CourseCategoryID": 4, "Name": "hiphop", "URL": "courses/hiphop", "Icon": "courses/hiphop/icon.webp", "Short": "courses/hiphop/short.html" },
+    { "CourseCategoryID": 5, "Name": "waacking", "URL": "courses/waacking", "Icon": "courses/waacking/icon.webp", "Short": "courses/waacking/short.html" },
+    { "CourseCategoryID": 6, "Name": "swing", "URL": "courses/swing", "Icon": "courses/swing/icon.webp", "Short": "courses/swing/short.html" },
+    { "CourseCategoryID": 7, "Name": "jazz-funk", "URL": "courses/jazz-funk", "Icon": "courses/jazz-funk/icon.webp", "Short": "courses/jazz-funk/short.html" },
+    { "CourseCategoryID": 8, "Name": "heels", "URL": "courses/heels", "Icon": "courses/heels/icon.webp", "Short": "courses/heels/short.html" },
+    { "CourseCategoryID": 9, "Name": "modern", "URL": "courses/modern", "Icon": "courses/modern/icon.webp", "Short": "courses/modern/short.html" },
+    { "CourseCategoryID": 10, "Name": "musical", "URL": "courses/musical", "Icon": "courses/musical/icon.webp", "Short": "courses/musical/short.html" },
+    { "CourseCategoryID": 11, "Name": "afro", "URL": "courses/afro", "Icon": "courses/afro/icon.webp", "Short": "courses/afro/short.html" },
+    { "CourseCategoryID": 12, "Name": "yoga", "URL": "courses/yoga", "Icon": "courses/yoga/icon.webp", "Short": "courses/yoga/short.html" },
+    { "CourseCategoryID": 13, "Name": "stretching", "URL": "courses/stretching", "Icon": "courses/stretching/icon.webp", "Short": "courses/stretching/short.html" },
+    { "CourseCategoryID": 14, "Name": "personal-training", "URL": "courses/personal-training", "Icon": "courses/personal-training/icon.webp", "Short": "courses/personal-training/short.html" }
+  ],
+  "Course": [
+    { "CourseID": 1, "CourseCategoryID": 6, "Name": "Lindy Hop 1", "Short": "courses/swing/short-lindy-hop-1.html" },
+    { "CourseID": 2, "CourseCategoryID": 6, "Name": "Lindy Hop 2", "Short": "courses/swing/short-lindy-hop-2.html" },
+    { "CourseID": 3, "CourseCategoryID": 6, "Name": "Shag/Charleston", "Short": "courses/swing/short-shag-charleston.html" }
+  ],
+  "Teacher": [
+    { "TeacherID": 1, "Name": "Nika Bagon", "URL": "teachers/nika-bagon", "Icon": "teachers/nika-bagon/icon.webp", "Short": "teachers/nika-bagon/short.html" }
+  ],
+  "CourseTeacher": [
+    { "CourseID": 1, "TeacherID": 1 },
+    { "CourseID": 2, "TeacherID": 1 },
+    { "CourseID": 3, "TeacherID": 1 }
+  ],
+  "Location": [
+    { "LocationID": 1, "Name": "sala-grande", "Short": "locations/short-sala-grande.html" },
+    { "LocationID": 2, "Name": "sala-piccola", "Short": "locations/short-sala-piccola.html" },
+    { "LocationID": 3, "Name": "doberdo", "Short": "locations/short-doberdo.html" }
+  ],
+  "ScheduleItem": [
+    { "ScheduleItemID": 1, "CourseID": 1, "LocationID": 1, "Day": 1, "StartTime": "18:30", "EndTime": "19:30" },
+    { "ScheduleItemID": 2, "CourseID": 2, "LocationID": 1, "Day": 1, "StartTime": "19:30", "EndTime": "20:30" },
+    { "ScheduleItemID": 3, "CourseID": 3, "LocationID": 1, "Day": 1, "StartTime": "20:30", "EndTime": "21:30" }
+  ],
+  "News": [
+    { "NewsID": 1, "Date": "2025-05-01", "URL": "news/2025-05-01-hello", "Short": "news/2025-05-01-hello/short.html" }
+  ]
+}
