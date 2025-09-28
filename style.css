@@ -319,7 +319,6 @@ footer .social i:hover {
     background-color: var(--dark-color);
     padding: 20px;
     border-radius: 10px;
-    margin: 20px 0;
     overflow-x: auto;
 }
 
@@ -354,19 +353,22 @@ footer .social i:hover {
     left: 0;
 }
 
-.course {
+.schedule-item {
     color: white;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
     text-decoration: none;
     box-sizing: border-box;
     min-height: 100%;
+}
+
+.schedule-item-time {
+    font-weight: normal;
+    font-size: 0.8rem;
+    opacity: 0.8;
 }
 
 /* PRINT */

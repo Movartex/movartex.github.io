@@ -1,4 +1,5 @@
 import { template } from './template.js';
+import * as col from '/scripts/color.js';
 
 export async function createCourseCard(course) {
     const url = new URL(course.URL, window.location.origin);
@@ -94,6 +95,33 @@ export async function createNewsCard(news) {
        const short = template(shortHTML);
        card.querySelector('h3').replaceChildren(short.querySelector('.news-title'));
        card.querySelector('p').replaceChildren(short.querySelector('.news-short'));
+    });
+
+    return card;
+}
+
+export async function createScheduleItem(scheduleItem, course, courseCategory) {
+    const url = new URL(courseCategory.URL, window.location.origin);
+    const short = new URL(course.Short, window.location.origin);
+
+    // random color for category
+    const golden = (1 + Math.sqrt(5)) / 2;
+    const hue = golden * courseCategory.CourseCategoryID;
+    const oklch = [0.6, 0.1, hue];
+    const oklab = col.oklchToOklab(oklch);
+    const srgb = col.oklabToSrgb(oklab);
+    const hex = col.srgbToHex(srgb);
+
+    const card = template(`
+        <a href="${url}" class="schedule-item" style="background-color: ${hex};">
+            <div class="schedule-item-name"></div>
+            <div class="schedule-item-time">${scheduleItem.StartTime} - ${scheduleItem.EndTime}</div>
+        </a>
+    `);
+
+    await fetch(short).then(response => response.text()).then(shortHTML => {
+       const short = template(shortHTML);
+       card.querySelector('.schedule-item-name').replaceChildren(short.querySelector('.course-title'));
     });
 
     return card;
