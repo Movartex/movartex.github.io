@@ -315,6 +315,30 @@ footer .social i:hover {
 
 /* SCHEDULE */
 
+select.select-location {
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 3px solid var(--text-color);
+    background: none;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.5rem;
+    appearance: none;
+
+    transition: border-color 200ms;
+    outline: none;
+
+    &:hover, &:focus {
+        border-color: var(--primary-color);
+    }
+
+    option {
+        font-size: initial;
+        color: initial;
+    }
+}
+
 .schedule-container {
     background-color: var(--dark-color);
     padding: 20px;

@@ -50,30 +50,78 @@
         <h2 lang="en">Class schedule</h2>
     </section>
     <section>
-        <!-- TODO: dropdown to select hall -->
-        <h2 lang="it">Sala grande</h2>
-        <h2 lang="sl">Velika dvorana</h2>
-        <h2 lang="en">Big hall</h2>
-        <div class="schedule-container container" id="new"></div>
+        <div class="container center">
+            <select lang="it" class="select-location">
+                <option selected disabled hidden>Scegli una sala</option>
+            </select>
+            <select lang="sl" class="select-location">
+                <option selected disabled hidden>Izberi dvorano</option>
+            </select>
+            <select lang="en" class="select-location">
+                <option selected disabled hidden>Choose a location</option>
+            </select>
+        </div>
+        <div class="schedule-container container" id="schedule"></div>
         <script type="module">
             import { db } from '/scripts/data.js';
             import { createSchedule } from '/scripts/schedule.js';
             import { createScheduleItem } from '/scripts/cards.js';
+            import { template } from '/scripts/template.js';
 
-            const scheduleItems = await Promise.all(db.select('ScheduleItem').map(async scheduleItem => {
-                const course = db.link('ScheduleItem', scheduleItem, 'Course');
-                const courseCategory = db.link('Course', course, 'CourseCategory');
-                const element = await createScheduleItem(scheduleItem, course, courseCategory);
-                return {
-                    element,
-                    start: scheduleItem.StartTime,
-                    end: scheduleItem.EndTime,
-                    day: scheduleItem.Day,
-                };
+            const selects = document.querySelectorAll('select.select-location');
+            const container = document.querySelector('#schedule');
+
+            // get locations and their shorts
+            const locations = await Promise.all(db.select('Location').map(async location => {
+                const url = new URL(location.Short, window.location.origin);
+                const short = await fetch(url).then(response => response.text()).then(text => template(text));
+                const name = location.Name;
+                return { name, short };
             }));
 
-            const schedule = createSchedule(scheduleItems);
-            document.querySelector('#new').appendChild(schedule);
+            // populate multilang selects with locations
+            for (const location of locations) {
+                const titles = location.short.querySelector('.location-title').children;
+                for (const title of titles) {
+                    const lang = title.getAttribute('lang');
+                    const select = document.querySelector(`select.select-location[lang="${lang}"]`);
+                    if (!select) continue;
+                    const option = document.createElement('option');
+                    option.value = location.name;
+                    option.replaceChildren(title.cloneNode(true));
+                    select.appendChild(option);
+                }
+            }
+
+            // when any multilang select changes
+            for (const select of selects) {
+                select.addEventListener('change', async e => {
+                    // sync all multilang selects
+                    for (const select of selects) {
+                        select.value = e.target.value;
+                    }
+
+                    // only schedule items at selected location
+                    const scheduleItems = db.select('ScheduleItem', scheduleItem => {
+                        const location = db.link('ScheduleItem', scheduleItem, 'Location');
+                        return location.Name === e.target.value;
+                    });
+
+                    // populate schedule
+                    const elements = await Promise.all(scheduleItems.map(async scheduleItem => {
+                        const course = db.link('ScheduleItem', scheduleItem, 'Course');
+                        const courseCategory = db.link('Course', course, 'CourseCategory');
+                        const element = await createScheduleItem(scheduleItem, course, courseCategory);
+                        return {
+                            element,
+                            start: scheduleItem.StartTime,
+                            end: scheduleItem.EndTime,
+                            day: scheduleItem.Day,
+                        };
+                    }));
+                    container.replaceChildren(createSchedule(elements));
+                });
+            }
         </script>
     </section>
     <footer>
