@@ -34,6 +34,10 @@ html {
     justify-content: center;
 }
 
+.column {
+    flex-direction: column;
+}
+
 .center-text {
     text-align: center;
 }
@@ -251,14 +255,6 @@ section h2, main h2 {
     text-align: center;
 }
 
-.copyright {
-    padding: 20px;
-    border-top: 1px solid #333;
-    color: #999;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
 .dancers {
     background-image: url("images/dancers-grayscale-2.webp");
     background-size: cover;
@@ -272,18 +268,36 @@ section h2, main h2 {
 }
 
 .social {
+    display: flex;
     gap: 0.5rem;
+
+    i {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        transition: color 0.2s;
+        padding: 0.5rem;
+
+        &:hover {
+            color: var(--primary-color-dark);
+        }
+    }
 }
 
-.social i {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    transition: color 0.2s;
-    padding: 0.5rem;
+/* FOOTER */
+
+footer .footer-text {
+    padding: 20px;
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    * {
+        color: inherit;
+    }
 }
 
-.social i:hover {
-    color: var(--primary-color-dark);
+footer > :first-child {
+    border-top: 1px solid #333;
 }
 
 footer .social i {
