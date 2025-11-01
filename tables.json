@@ -21,12 +21,25 @@
     { "CourseID": 3, "CourseCategoryID": 6, "Name": "Shag/Charleston", "Short": "courses/swing/short-shag-charleston.html" }
   ],
   "Teacher": [
-    { "TeacherID": 1, "Name": "Nika Bagon", "URL": "teachers/nika-bagon", "Icon": "teachers/nika-bagon/icon.webp", "Short": "teachers/nika-bagon/short.html" }
+    { "TeacherID": 1, "Name": "Nika Bagon", "URL": "teachers/nika-bagon", "Icon": "teachers/nika-bagon/icon.webp", "Short": "teachers/nika-bagon/short.html" },
+    { "TeacherID": 2, "Name": "Alessandra Russo", "URL": "teachers/alessandra-russo", "Icon": "teachers/alessandra-russo/icon.webp", "Short": "teachers/alessandra-russo/short.html" },
+    { "TeacherID": 3, "Name": "Sofia Provvidenti", "URL": "teachers/sofia-provvidenti", "Icon": "teachers/sofia-provvidenti/icon.webp", "Short": "teachers/sofia-provvidenti/short.html" },
+    { "TeacherID": 4, "Name": "Ilenia Mocchiutti", "URL": "teachers/ilenia-mocchiutti", "Icon": "teachers/ilenia-mocchiutti/icon.webp", "Short": "teachers/ilenia-mocchiutti/short.html" },
+    { "TeacherID": 5, "Name": "Giulia Zuiani", "URL": "teachers/giulia-zuiani", "Icon": "teachers/giulia-zuiani/icon.webp", "Short": "teachers/giulia-zuiani/short.html" },
+    { "TeacherID": 6, "Name": "Nika Cej", "URL": "teachers/nika-cej", "Icon": "teachers/nika-cej/icon.webp", "Short": "teachers/nika-cej/short.html" },
+    { "TeacherID": 7, "Name": "Nicola Saito", "URL": "teachers/nicola-saito", "Icon": "teachers/nicola-saito/icon.webp", "Short": "teachers/nicola-saito/short.html" },
+    { "TeacherID": 8, "Name": "Marianna Barbato", "URL": "teachers/marianna-barbato", "Icon": "teachers/marianna-barbato/icon.webp", "Short": "teachers/marianna-barbato/short.html" },
+    { "TeacherID": 9, "Name": "Mara Cappiello", "URL": "teachers/mara-cappiello", "Icon": "teachers/mara-cappiello/icon.webp", "Short": "teachers/mara-cappiello/short.html" },
+    { "TeacherID": 10, "Name": "Žiga Lesar", "URL": "teachers/ziga-lesar", "Icon": "teachers/ziga-lesar/icon.webp", "Short": "teachers/ziga-lesar/short.html" },
+    { "TeacherID": 11, "Name": "Mateja Jelaska", "URL": "teachers/mateja-jelaska", "Icon": "teachers/mateja-jelaska/icon.webp", "Short": "teachers/mateja-jelaska/short.html" }
   ],
   "CourseTeacher": [
-    { "CourseID": 1, "TeacherID": 1 },
-    { "CourseID": 2, "TeacherID": 1 },
-    { "CourseID": 3, "TeacherID": 1 }
+    { "CourseID": 1, "TeacherID": 10 },
+    { "CourseID": 1, "TeacherID": 11 },
+    { "CourseID": 2, "TeacherID": 10 },
+    { "CourseID": 2, "TeacherID": 11 },
+    { "CourseID": 3, "TeacherID": 10 },
+    { "CourseID": 3, "TeacherID": 11 }
   ],
   "Location": [
     { "LocationID": 1, "Name": "sala-grande", "Short": "locations/short-sala-grande.html" },
