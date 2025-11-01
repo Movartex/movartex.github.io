@@ -47,9 +47,9 @@
     { "LocationID": 3, "Name": "doberdo", "Short": "locations/short-doberdo.html" }
   ],
   "ScheduleItem": [
-    { "ScheduleItemID": 1, "CourseID": 1, "LocationID": 1, "Day": 1, "StartTime": "18:30", "EndTime": "19:30" },
-    { "ScheduleItemID": 2, "CourseID": 2, "LocationID": 1, "Day": 1, "StartTime": "19:30", "EndTime": "20:30" },
-    { "ScheduleItemID": 3, "CourseID": 3, "LocationID": 1, "Day": 1, "StartTime": "20:30", "EndTime": "21:30" }
+    { "ScheduleItemID": 1, "CourseID": 3, "LocationID": 1, "Day": 1, "StartTime": "18:30", "EndTime": "19:30" },
+    { "ScheduleItemID": 2, "CourseID": 1, "LocationID": 1, "Day": 1, "StartTime": "19:30", "EndTime": "20:30" },
+    { "ScheduleItemID": 3, "CourseID": 2, "LocationID": 1, "Day": 1, "StartTime": "20:30", "EndTime": "21:30" }
   ],
   "News": [
     { "NewsID": 1, "Date": "2025-05-01", "URL": "news/2025-05-01-hello", "Short": "news/2025-05-01-hello/short.html" }
