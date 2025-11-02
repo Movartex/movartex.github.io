@@ -56,7 +56,17 @@
     { "CourseID": 2, "TeacherID": 10 },
     { "CourseID": 2, "TeacherID": 11 },
     { "CourseID": 3, "TeacherID": 10 },
-    { "CourseID": 3, "TeacherID": 11 }
+    { "CourseID": 3, "TeacherID": 11 },
+    { "CourseID": 22, "TeacherID": 5 },
+    { "CourseID": 23, "TeacherID": 5 },
+    { "CourseID": 12, "TeacherID": 7 },
+    { "CourseID": 13, "TeacherID": 7 },
+    { "CourseID": 14, "TeacherID": 7 },
+    { "CourseID": 18, "TeacherID": 4 },
+    { "CourseID": 19, "TeacherID": 4 },
+    { "CourseID": 4, "TeacherID": 4 },
+    { "CourseID": 4, "TeacherID": 8 },
+    { "CourseID": 4, "TeacherID": 9 }
   ],
   "Location": [
     { "LocationID": 1, "Name": "sala-grande", "Short": "locations/short-sala-grande.html" },
