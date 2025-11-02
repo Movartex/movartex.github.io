@@ -395,9 +395,10 @@ select.select-location {
 .schedule-item {
     color: white;
     padding: 10px;
+    border: 1px solid var(--dark-color);
     border-radius: 5px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.2);
     text-decoration: none;
     box-sizing: border-box;
     min-height: 100%;
