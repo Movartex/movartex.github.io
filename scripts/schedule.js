@@ -43,8 +43,8 @@ export function createSchedule(items = []) {
         ['Mercoledì', 'Sreda', 'Wednesday'],
         ['Giovedì', 'Četrtek', 'Thursday'],
         ['Venerdì', 'Petek', 'Friday'],
-        ['Sabato', 'Sobota', 'Saturday'],
-        ['Domenica', 'Nedelja', 'Sunday'],
+        //['Sabato', 'Sobota', 'Saturday'],
+        //['Domenica', 'Nedelja', 'Sunday'],
     ];
     const grid = schedule.querySelector('.schedule-grid');
     for (const day of days) {
