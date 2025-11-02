@@ -51,8 +51,8 @@ export function createSchedule(items = []) {
         grid.appendChild(createHeaderDay(...day));
     }
 
-    const timeStart = timeToNumber('10:00');
-    const timeEnd = timeToNumber('22:00');
+    const timeStart = timeToNumber('15:00');
+    const timeEnd = timeToNumber('23:00');
     const timeStep = timeToNumber('01:00');
     const gridStep = timeToNumber('00:15');
 
