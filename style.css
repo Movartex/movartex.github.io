@@ -255,6 +255,10 @@ section h2, main h2 {
     text-align: center;
 }
 
+p {
+    line-height: 1.5;
+}
+
 .dancers {
     background-image: url("images/dancers-grayscale-2.webp");
     background-size: cover;
