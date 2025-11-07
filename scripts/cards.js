@@ -11,9 +11,9 @@ export async function createCourseCard(course) {
             <img class="icon-image" src="${icon}">
             <h3></h3>
             <p></p>
-            <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fas fa-arrow-right"></i></a>
-            <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fas fa-arrow-right"></i></a>
-            <a lang="en" class="learn-more" href="${url}">Learn more<i class="fas fa-arrow-right"></i></a>
+            <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fa fa-arrow-right"></i></a>
+            <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fa fa-arrow-right"></i></a>
+            <a lang="en" class="learn-more" href="${url}">Learn more<i class="fa fa-arrow-right"></i></a>
         </div>
     `);
 
@@ -36,9 +36,9 @@ export async function createCourseCategoryCard(courseCategory) {
             <img class="icon-image" src="${icon}">
             <h3></h3>
             <p></p>
-            <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fas fa-arrow-right"></i></a>
-            <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fas fa-arrow-right"></i></a>
-            <a lang="en" class="learn-more" href="${url}">Learn more<i class="fas fa-arrow-right"></i></a>
+            <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fa fa-arrow-right"></i></a>
+            <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fa fa-arrow-right"></i></a>
+            <a lang="en" class="learn-more" href="${url}">Learn more<i class="fa fa-arrow-right"></i></a>
         </div>
     `);
 
@@ -61,9 +61,9 @@ export async function createTeacherCard(teacher) {
             <img class="icon-image" src="${icon}">
             <h3></h3>
             <p></p>
-            <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fas fa-arrow-right"></i></a>
-            <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fas fa-arrow-right"></i></a>
-            <a lang="en" class="learn-more" href="${url}">Learn more<i class="fas fa-arrow-right"></i></a>
+            <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fa fa-arrow-right"></i></a>
+            <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fa fa-arrow-right"></i></a>
+            <a lang="en" class="learn-more" href="${url}">Learn more<i class="fa fa-arrow-right"></i></a>
         </div>
     `);
 
@@ -85,9 +85,9 @@ export async function createNewsCard(news) {
             <div class="news-date">${news.Date}</div>
             <h3></h3>
             <p></p>
-            <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fas fa-arrow-right"></i></a>
-            <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fas fa-arrow-right"></i></a>
-            <a lang="en" class="learn-more" href="${url}">Learn more<i class="fas fa-arrow-right"></i></a>
+            <a lang="it" class="learn-more" href="${url}">Scopri di più<i class="fa fa-arrow-right"></i></a>
+            <a lang="sl" class="learn-more" href="${url}">Preberi več<i class="fa fa-arrow-right"></i></a>
+            <a lang="en" class="learn-more" href="${url}">Learn more<i class="fa fa-arrow-right"></i></a>
         </div>
     `);
 

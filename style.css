@@ -99,7 +99,7 @@ nav a {
 }
 
 nav a:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 0;
     height: 2px;
@@ -418,6 +418,38 @@ select.select-location {
     font-size: 0.9rem;
     opacity: 0.8;
 }
+
+/* ICONS */
+
+@font-face {
+    font-family: "fa-subset";
+    src:  url("images/fa-subset.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.fa {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: "fa-subset" !important;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-transform: none;
+    text-rendering: auto;
+}
+
+.fa-clock:before { content: "\e900"; }
+.fa-envelope:before { content: "\e901"; }
+.fa-map-marker-alt:before { content: "\e902"; }
+.fa-phone-alt:before { content: "\e903"; }
+.fa-share-nodes:before { content: "\e904"; }
+.fa-arrow-right:before { content: "\e905"; }
+.fa-facebook:before { content: "\e906"; }
+.fa-instagram:before { content: "\e907"; }
+.fa-tiktok:before { content: "\e908"; }
 
 /* PRINT */
 
