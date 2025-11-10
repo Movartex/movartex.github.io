@@ -124,6 +124,7 @@ nav a:hover:after, nav a.selected:after {
     width: 20px;
     height: 15px;
 
+    border: none;
     cursor: pointer;
 
     background-size: cover;
