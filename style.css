@@ -94,22 +94,21 @@ nav a {
     color: white;
     letter-spacing: 1px;
     text-transform: uppercase;
-    padding: 20px 0;
-    position: relative;
+    padding: 20px 0 10px 0; /* bottom = 20px - margin of after */
 }
 
-nav a:after {
+nav a::after {
     content: "";
-    position: absolute;
+    display: block;
     width: 0;
     height: 2px;
-    bottom: 0;
-    left: 0;
+    margin: auto;
+    margin-top: 10px;
     background-color: var(--primary-color);
     transition: width 0.2s;
 }
 
-nav a:hover:after, nav a.selected:after {
+nav a:hover::after, nav a.selected::after {
     width: 100%;
 }
 
@@ -442,15 +441,15 @@ select.select-location {
     text-rendering: auto;
 }
 
-.fa-clock:before { content: "\e900"; }
-.fa-envelope:before { content: "\e901"; }
-.fa-map-marker-alt:before { content: "\e902"; }
-.fa-phone-alt:before { content: "\e903"; }
-.fa-share-nodes:before { content: "\e904"; }
-.fa-arrow-right:before { content: "\e905"; }
-.fa-facebook:before { content: "\e906"; }
-.fa-instagram:before { content: "\e907"; }
-.fa-tiktok:before { content: "\e908"; }
+.fa-clock::before { content: "\e900"; }
+.fa-envelope::before { content: "\e901"; }
+.fa-map-marker-alt::before { content: "\e902"; }
+.fa-phone-alt::before { content: "\e903"; }
+.fa-share-nodes::before { content: "\e904"; }
+.fa-arrow-right::before { content: "\e905"; }
+.fa-facebook::before { content: "\e906"; }
+.fa-instagram::before { content: "\e907"; }
+.fa-tiktok::before { content: "\e908"; }
 
 /* PRINT */
 
