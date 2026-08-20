@@ -47,81 +47,58 @@
         <h2 lang="sl">Urnik tečajev</h2>
         <h2 lang="en">Class schedule</h2>
     </section>
-    <section>
-        <div class="container center">
-            <select lang="it" class="select-location">
-                <option selected disabled hidden>Scegli una sala</option>
-            </select>
-            <select lang="sl" class="select-location">
-                <option selected disabled hidden>Izberi dvorano</option>
-            </select>
-            <select lang="en" class="select-location">
-                <option selected disabled hidden>Choose a location</option>
-            </select>
-        </div>
-        <div class="schedule-container container" id="schedule"></div>
-        <script type="module">
-            import { db } from '/scripts/data.js';
-            import { createSchedule } from '/scripts/schedule.js';
-            import { createScheduleItem } from '/scripts/cards.js';
-            import { template } from '/scripts/template.js';
+    <script type="module">
+        import { db } from '/scripts/data.js';
+        import { createSchedule } from '/scripts/schedule.js';
+        import { createScheduleItem } from '/scripts/cards.js';
+        import { template } from '/scripts/template.js';
 
-            const selects = document.querySelectorAll('select.select-location');
-            const container = document.querySelector('#schedule');
+        const footer = document.querySelector('footer');
 
-            // get locations and their shorts
-            const locations = await Promise.all(db.select('Location').map(async location => {
-                const url = new URL(location.Short, window.location.origin);
-                const short = await fetch(url).then(response => response.text()).then(text => template(text));
-                const name = location.Name;
-                return { name, short };
+        // get locations and their shorts
+        const locations = await Promise.all(db.select('Location').map(async location => {
+            const url = new URL(location.Short, window.location.origin);
+            const short = await fetch(url).then(response => response.text()).then(text => template(text));
+            return { ...location, short };
+        }));
+
+        // create a schedule section for each location
+        for (const location of locations) {
+            const section = document.createElement('section');
+            const container = document.createElement('div');
+            container.classList.add('container');
+
+            // wrap location names in h2
+            const titles = location.short.querySelector('.location-title').children;
+            const heading = document.createElement('h2');
+            heading.replaceChildren(...titles);
+            section.append(heading);
+
+            // get schedule items at current location
+            const scheduleItems = db.select('ScheduleItem', scheduleItem => {
+                const scheduleItemLocation = db.link('ScheduleItem', scheduleItem, 'Location');
+                return scheduleItemLocation.LocationID === location.LocationID;
+            });
+
+            // populate schedule
+            const elements = await Promise.all(scheduleItems.map(async scheduleItem => {
+                const course = db.link('ScheduleItem', scheduleItem, 'Course');
+                const courseCategory = db.link('Course', course, 'CourseCategory');
+                const element = await createScheduleItem(scheduleItem, course, courseCategory);
+                return {
+                    element,
+                    start: scheduleItem.StartTime,
+                    end: scheduleItem.EndTime,
+                    day: scheduleItem.Day,
+                };
             }));
+            container.append(createSchedule(elements));
 
-            // populate multilang selects with locations
-            for (const location of locations) {
-                const titles = location.short.querySelector('.location-title').children;
-                for (const title of titles) {
-                    const lang = title.getAttribute('lang');
-                    const select = document.querySelector(`select.select-location[lang="${lang}"]`);
-                    if (!select) continue;
-                    const option = document.createElement('option');
-                    option.value = location.name;
-                    option.replaceChildren(title.cloneNode(true));
-                    select.appendChild(option);
-                }
-            }
-
-            // when any multilang select changes
-            for (const select of selects) {
-                select.addEventListener('change', async e => {
-                    // sync all multilang selects
-                    for (const select of selects) {
-                        select.value = e.target.value;
-                    }
-
-                    // only schedule items at selected location
-                    const scheduleItems = db.select('ScheduleItem', scheduleItem => {
-                        const location = db.link('ScheduleItem', scheduleItem, 'Location');
-                        return location.Name === e.target.value;
-                    });
-
-                    // populate schedule
-                    const elements = await Promise.all(scheduleItems.map(async scheduleItem => {
-                        const course = db.link('ScheduleItem', scheduleItem, 'Course');
-                        const courseCategory = db.link('Course', course, 'CourseCategory');
-                        const element = await createScheduleItem(scheduleItem, course, courseCategory);
-                        return {
-                            element,
-                            start: scheduleItem.StartTime,
-                            end: scheduleItem.EndTime,
-                            day: scheduleItem.Day,
-                        };
-                    }));
-                    container.replaceChildren(createSchedule(elements));
-                });
-            }
-        </script>
-    </section>
+            // append this section after first section
+            section.append(container);
+            footer.before(section);
+        }
+    </script>
     <footer>
         <div class="container">
             <div class="center-text footer-text">
