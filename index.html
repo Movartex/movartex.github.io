@@ -64,10 +64,11 @@
     <script type="module">
         import { template } from '/scripts/template.js';
         import { db } from '/scripts/data.js';
-        import { createCourseCategoryCard, createNewsCard } from '/scripts/cards.js';
+        import { createCourseCard, createNewsCard } from '/scripts/cards.js';
+        import { shuffle } from '/scripts/shuffle.js';
 
         const courses = document.querySelector('#courses');
-        const courseCards = await Promise.all(db.select('CourseCategory').slice(0, 3).map(createCourseCategoryCard));
+        const courseCards = await Promise.all(shuffle(db.select('Course')).slice(0, 5).map(createCourseCard));
         for (const card of courseCards) {
             courses.appendChild(card);
         }
@@ -85,7 +86,7 @@
         courses.appendChild(defaultCourseCard);
 
         const news = document.querySelector('#news');
-        const newsCards = await Promise.all(db.select('News').slice(0, 3).map(createNewsCard));
+        const newsCards = await Promise.all(db.select('News').slice(0, 5).map(createNewsCard));
         for (const card of newsCards) {
             news.appendChild(card);
         }
@@ -94,9 +95,9 @@
         <div class="container">
             <div class="center-text footer-text">
                 <div>
-                    <span lang="it">© 2025 ASD Movartex. Tutti i diritti riservati.</span>
-                    <span lang="sl">© 2025 ASD Movartex. Vse pravice pridržane.</span>
-                    <span lang="en">© 2025 ASD Movartex. All rights reserved.</span>
+                    <span lang="it">© 2026 ASD Movartex. Tutti i diritti riservati.</span>
+                    <span lang="sl">© 2026 ASD Movartex. Vse pravice pridržane.</span>
+                    <span lang="en">© 2026 ASD Movartex. All rights reserved.</span>
                 </div>
                 <div>
                     <span lang="it">NON usiamo i cookie e NON raccogliamo dati personali.</span>

@@ -1,42 +1,20 @@
 {
-  "CourseCategory": {
-    "type": "object",
-    "properties": {
-      "CourseCategoryID": { "type": "integer" },
-      "Name": { "type": "string" },
-      "URL": { "type": "string" },
-      "Icon": { "type": "string" },
-      "Short": { "type": "string" }
-    },
-    "required": ["CourseCategoryID"],
-    "autoIncrement": ["CourseCategoryID"],
-    "primaryKey": ["CourseCategoryID"]
-  },
   "Course": {
     "type": "object",
     "properties": {
       "CourseID": { "type": "integer" },
-      "CourseCategoryID": { "type": "integer" },
-      "Name": { "type": "string" },
-      "Short": { "type": "string" }
+      "Short": { "type": "string" },
+      "URL": { "type": "string" },
+      "Icon": { "type": "string" }
     },
-    "required": ["CourseID", "CourseCategoryID"],
+    "required": ["CourseID"],
     "autoIncrement": ["CourseID"],
-    "primaryKey": ["CourseID"],
-    "foreignKeys": [
-      {
-        "name": "CourseCategory",
-        "nativeKey": ["CourseCategoryID"],
-        "foreignKey": ["CourseCategoryID"],
-        "foreignTable": "CourseCategory"
-      }
-    ]
+    "primaryKey": ["CourseID"]
   },
   "Teacher": {
     "type": "object",
     "properties": {
       "TeacherID": { "type": "integer" },
-      "Name": { "type": "string" },
       "URL": { "type": "string" },
       "Icon": { "type": "string" },
       "Short": { "type": "string" }
@@ -74,7 +52,6 @@
     "type": "object",
     "properties": {
       "LocationID": { "type": "integer" },
-      "Name": { "type": "string" },
       "Short": { "type": "string" }
     },
     "required": ["LocationID"],

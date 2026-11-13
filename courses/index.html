@@ -49,10 +49,10 @@
         <div class="container grid" id="courses"></div>
         <script type="module">
             import { db } from '/scripts/data.js';
-            import { createCourseCategoryCard } from '/scripts/cards.js';
+            import { createCourseCard } from '/scripts/cards.js';
 
             const courses = document.querySelector('#courses');
-            const courseCards = await Promise.all(db.select('CourseCategory').map(createCourseCategoryCard));
+            const courseCards = await Promise.all(db.select('Course').map(createCourseCard));
             for (const card of courseCards) {
                 courses.appendChild(card);
             }
@@ -62,9 +62,9 @@
         <div class="container">
             <div class="center-text footer-text">
                 <div>
-                    <span lang="it">© 2025 ASD Movartex. Tutti i diritti riservati.</span>
-                    <span lang="sl">© 2025 ASD Movartex. Vse pravice pridržane.</span>
-                    <span lang="en">© 2025 ASD Movartex. All rights reserved.</span>
+                    <span lang="it">© 2026 ASD Movartex. Tutti i diritti riservati.</span>
+                    <span lang="sl">© 2026 ASD Movartex. Vse pravice pridržane.</span>
+                    <span lang="en">© 2026 ASD Movartex. All rights reserved.</span>
                 </div>
                 <div>
                     <span lang="it">NON usiamo i cookie e NON raccogliamo dati personali.</span>

@@ -83,8 +83,7 @@
             // populate schedule
             const elements = await Promise.all(scheduleItems.map(async scheduleItem => {
                 const course = db.link('ScheduleItem', scheduleItem, 'Course');
-                const courseCategory = db.link('Course', course, 'CourseCategory');
-                const element = await createScheduleItem(scheduleItem, course, courseCategory);
+                const element = await createScheduleItem(scheduleItem, course);
                 return {
                     element,
                     start: scheduleItem.StartTime,
@@ -103,9 +102,9 @@
         <div class="container">
             <div class="center-text footer-text">
                 <div>
-                    <span lang="it">© 2025 ASD Movartex. Tutti i diritti riservati.</span>
-                    <span lang="sl">© 2025 ASD Movartex. Vse pravice pridržane.</span>
-                    <span lang="en">© 2025 ASD Movartex. All rights reserved.</span>
+                    <span lang="it">© 2026 ASD Movartex. Tutti i diritti riservati.</span>
+                    <span lang="sl">© 2026 ASD Movartex. Vse pravice pridržane.</span>
+                    <span lang="en">© 2026 ASD Movartex. All rights reserved.</span>
                 </div>
                 <div>
                     <span lang="it">NON usiamo i cookie e NON raccogliamo dati personali.</span>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000">
+    <link rel="icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Movartex - Art & Movement</title>
+    <script src="/scripts/lang.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a class="logo center" href="/"></a>
+            <nav lang="it">
+                <a href="/courses">Corsi</a>
+                <a href="/teachers" class="selected">Insegnanti</a>
+                <a href="/schedule">Orari</a>
+                <a href="/news">Notizie</a>
+                <a href="/contact">Contatto</a>
+            </nav>
+            <nav lang="sl">
+                <a href="/courses">Tečaji</a>
+                <a href="/teachers" class="selected">Učitelji</a>
+                <a href="/schedule">Urnik</a>
+                <a href="/news">Novice</a>
+                <a href="/contact">Kontakt</a>
+            </nav>
+            <nav lang="en">
+                <a href="/courses">Courses</a>
+                <a href="/teachers" class="selected">Teachers</a>
+                <a href="/schedule">Schedule</a>
+                <a href="/news">News</a>
+                <a href="/contact">Contact</a>
+            </nav>
+            <div class="lang-select">
+                <button onclick="changeLanguage('it');" class="lang-icon lang-it"></button>
+                <button onclick="changeLanguage('sl');" class="lang-icon lang-sl"></button>
+                <button onclick="changeLanguage('en');" class="lang-icon lang-en"></button>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="container clearfix">
+            <h2>Alex Devetak</h2>
+            <p>Long description</p>
+        </div>
+    </section>
+    <section>
+        <h2 lang="it">Corsi</h2>
+        <h2 lang="sl">Tečaji</h2>
+        <h2 lang="en">Courses</h2>
+        <div class="container grid" id="courses"></div>
+        <script type="module">
+            import { db, coursesOfTeacher } from '/scripts/data.js';
+            import { createCourseCard } from '/scripts/cards.js';
+
+            const container = document.querySelector('#courses');
+            const courses = coursesOfTeacher(16);
+            const courseCards = await Promise.all(courses.map(course => createCourseCard(course)));
+
+            for (const card of courseCards) {
+                container.appendChild(card);
+            }
+        </script>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="center-text footer-text">
+                <div>
+                    <span lang="it">© 2026 ASD Movartex. Tutti i diritti riservati.</span>
+                    <span lang="sl">© 2026 ASD Movartex. Vse pravice pridržane.</span>
+                    <span lang="en">© 2026 ASD Movartex. All rights reserved.</span>
+                </div>
+                <div>
+                    <span lang="it">NON usiamo i cookie e NON raccogliamo dati personali.</span>
+                    <span lang="sl">NE uporabljamo piškotkov in NE zbiramo osebnih podatkov.</span>
+                    <span lang="en">We do NOT use cookies and we do NOT collect personal data.</span>
+                </div>
+                <div>
+                    <span lang="it">Sede legale: Corso Verdi 12, 34170 Gorizia, Italia</span>
+                    <span lang="sl">Sedež: Corso Verdi 12, 34170 Gorica, Italija</span>
+                    <span lang="en">Registered office: Corso Verdi 12, 34170 Gorizia, Italy</span>
+                </div>
+                <div>
+                    <span lang="it">P.IVA: 01177280318</span>
+                    <span lang="sl">Davčna št. (italijanska): 01177280318</span>
+                    <span lang="en">VAT (italian): 01177280318</span>
+                </div>
+            </div>
+            <div class="social center">
+                <a href="https://www.facebook.com/ASDMovartex/"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/asd_movartex/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@movartex_st_la"><i class="fa fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

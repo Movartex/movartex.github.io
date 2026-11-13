@@ -44,10 +44,11 @@
     </header>
     <section>
         <div class="container clearfix">
-            <h2>Heels</h2>
+            <h2 lang="it">Heels</h2>
+            <h2 lang="sl">Heels</h2>
+            <h2 lang="en">Heels</h2>
             <img src="/images/dancers-grayscale-2.webp" class="image right">
-            <p class="text">This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text.</p>
-            <p>This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text. This is some long text.</p>
+            <p class="text">Long description</p>
         </div>
     </section>
     <section>
@@ -56,12 +57,11 @@
         <h2 lang="en">Teachers</h2>
         <div class="container grid" id="teachers"></div>
         <script type="module">
-            import { db, teachersOfCategory } from '/scripts/data.js';
+            import { db, teachersOfCourse } from '/scripts/data.js';
             import { createTeacherCard } from '/scripts/cards.js';
 
             const container = document.querySelector('#teachers');
-            const courseCategory = db.find('CourseCategory', ({ Name }) => Name === 'heels');
-            const teachers = teachersOfCategory(courseCategory);
+            const teachers = teachersOfCourse(19);
             const teacherCards = await Promise.all(teachers.map(createTeacherCard));
 
             for (const card of teacherCards) {
@@ -79,16 +79,11 @@
             import { createSchedule } from '/scripts/schedule.js';
             import { createScheduleItem } from '/scripts/cards.js';
 
-            const selection = db.select('ScheduleItem', scheduleItem => {
-                const course = db.link('ScheduleItem', scheduleItem, 'Course');
-                const courseCategory = db.link('Course', course, 'CourseCategory');
-                return courseCategory.Name === 'heels';
-            });
+            const selection = db.select('ScheduleItem', scheduleItem => scheduleItem.CourseID === 19);
             const scheduleItems = await Promise.all(selection.map(async scheduleItem => {
                 const location = db.link('ScheduleItem', scheduleItem, 'Location');
                 const course = db.link('ScheduleItem', scheduleItem, 'Course');
-                const courseCategory = db.link('Course', course, 'CourseCategory');
-                const element = await createScheduleItem(scheduleItem, course, courseCategory, location);
+                const element = await createScheduleItem(scheduleItem, course, location);
                 return {
                     element,
                     start: scheduleItem.StartTime,
@@ -105,9 +100,9 @@
         <div class="container">
             <div class="center-text footer-text">
                 <div>
-                    <span lang="it">© 2025 ASD Movartex. Tutti i diritti riservati.</span>
-                    <span lang="sl">© 2025 ASD Movartex. Vse pravice pridržane.</span>
-                    <span lang="en">© 2025 ASD Movartex. All rights reserved.</span>
+                    <span lang="it">© 2026 ASD Movartex. Tutti i diritti riservati.</span>
+                    <span lang="sl">© 2026 ASD Movartex. Vse pravice pridržane.</span>
+                    <span lang="en">© 2026 ASD Movartex. All rights reserved.</span>
                 </div>
                 <div>
                     <span lang="it">NON usiamo i cookie e NON raccogliamo dati personali.</span>

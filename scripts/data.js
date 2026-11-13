@@ -7,19 +7,12 @@ export const db = new DB();
 db.tables = tables;
 db.schemas = schemas;
 
-export function coursesOfTeacher(teacher) {
-    return db.select('Course', course =>
-        db.find('CourseTeacher', ({ CourseID, TeacherID }) =>
-            CourseID === course.CourseID && TeacherID === teacher.TeacherID));
+export function coursesOfTeacher(TeacherID) {
+    const entries = db.select('CourseTeacher', courseTeacher => courseTeacher.TeacherID === TeacherID);
+    return db.select('Course', course => entries.some(entry => entry.CourseID === course.CourseID));
 }
 
-export function coursesOfCategory(courseCategory) {
-    return db.select('Course', course => course.CourseCategoryID === courseCategory.CourseCategoryID);
-}
-
-export function teachersOfCategory(courseCategory) {
-    const courses = coursesOfCategory(courseCategory);
-    return db.select('Teacher', teacher =>
-        db.find('CourseTeacher', ({ CourseID, TeacherID }) =>
-            courses.find(course => course.CourseID === CourseID) && TeacherID === teacher.TeacherID));
+export function teachersOfCourse(CourseID) {
+    const entries = db.select('CourseTeacher', courseTeacher => courseTeacher.CourseID === CourseID);
+    return db.select('Teacher', teacher => entries.some(entry => entry.TeacherID === teacher.TeacherID));
 }

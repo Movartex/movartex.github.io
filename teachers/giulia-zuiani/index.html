@@ -57,17 +57,11 @@
         <div class="container grid" id="courses"></div>
         <script type="module">
             import { db, coursesOfTeacher } from '/scripts/data.js';
-            import { createCourseCategoryCard } from '/scripts/cards.js';
+            import { createCourseCard } from '/scripts/cards.js';
 
             const container = document.querySelector('#courses');
-            const teacher = db.find('Teacher', ({ Name }) => Name === 'Giulia Zuiani');
-            const courses = coursesOfTeacher(teacher);
-            const courseCards = await Promise.all(courses.map(async course => {
-                const courseCategory = db.link('Course', course, 'CourseCategory');
-                courseCategory.Short = course.Short;
-                const card = await createCourseCategoryCard(courseCategory);
-                return card;
-            }));
+            const courses = coursesOfTeacher(5);
+            const courseCards = await Promise.all(courses.map(course => createCourseCard(course)));
 
             for (const card of courseCards) {
                 container.appendChild(card);
@@ -78,9 +72,9 @@
         <div class="container">
             <div class="center-text footer-text">
                 <div>
-                    <span lang="it">© 2025 ASD Movartex. Tutti i diritti riservati.</span>
-                    <span lang="sl">© 2025 ASD Movartex. Vse pravice pridržane.</span>
-                    <span lang="en">© 2025 ASD Movartex. All rights reserved.</span>
+                    <span lang="it">© 2026 ASD Movartex. Tutti i diritti riservati.</span>
+                    <span lang="sl">© 2026 ASD Movartex. Vse pravice pridržane.</span>
+                    <span lang="en">© 2026 ASD Movartex. All rights reserved.</span>
                 </div>
                 <div>
                     <span lang="it">NON usiamo i cookie e NON raccogliamo dati personali.</span>
